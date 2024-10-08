@@ -10,3 +10,4 @@ runs:
     shell: bash
     run: |
       echo "test action ran"
+      echo "success"
