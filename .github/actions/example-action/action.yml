@@ -1,1 +1,13 @@
-    
+# COPYRIGHT HERE 
+
+name: Testing action 
+description: ""
+
+runs:
+  using: "composite"
+  steps:
+  - name: output test
+    shell: bash
+    run: |
+      echo "test action ran"
+      echo "success"
