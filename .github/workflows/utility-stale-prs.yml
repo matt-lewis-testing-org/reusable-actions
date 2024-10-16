@@ -1,0 +1,52 @@
+name: Stale PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run every day at midnight
+
+  # allow this workflow to be reused
+  workflow_call:
+    inputs:
+      warn_max_days:
+        description: |
+          The number of days a PR should be open for before it is marked as stale.
+        required: false
+        type: string
+        default: "30"
+
+      close_max_days:
+        description: |
+          The number of days a stale PR should be open for before it is closed.
+          This number is not added to inputs.max_warn_days and is instead the total number of days the PR is open for.
+        required: false
+        type: string
+        default: "60"
+
+      warn_comment_override:
+        description: |
+            A custom message for the workflow to use as a comment when it marks PRs as stale
+        required: false
+        type: string
+        default: ""
+
+      close_comment_override:
+        description: |
+            A custom message for the workflow to use as a comment when it closes stale PRs
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  warn-and-close:
+    runs-on: ubuntu-latest
+
+    env:
+      WARN_MAX_DAYS: ${{ inputs.warn_max_days || '30' }}
+      CLOSE_MAX_DAYS: ${{ inputs. close_max_days || '60' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: test next step
+        run: echo "job done"
