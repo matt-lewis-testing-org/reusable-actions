@@ -1,9 +1,6 @@
 name: Stale PRs
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Run every day at midnight
-
   # allow this workflow to be reused
   workflow_call:
     inputs:
